@@ -32,6 +32,12 @@ def home():
         "message": "Customer Segmentation API is live"
     }
 
+@app.route("/predict", methods=["POST"])
+def predict():
+    ...
+
+
+
 
 
 @app.route('/health', methods=['GET'])
