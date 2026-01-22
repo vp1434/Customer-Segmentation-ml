@@ -22,6 +22,18 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MODELS_DIR = os.path.join(DATA_DIR, 'models')
 os.makedirs(MODELS_DIR, exist_ok=True)
 
+
+
+
+@app.route("/")
+def home():
+    return {
+        "status": "Backend is running",
+        "message": "Customer Segmentation API is live"
+    }
+
+
+
 @app.route('/health', methods=['GET'])
 def health_check():
     """Health check endpoint."""
