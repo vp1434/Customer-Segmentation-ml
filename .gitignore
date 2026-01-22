@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 __pycache__/
@@ -35,3 +36,7 @@ yarn-error.log*
 # Database
 *.db
 *.sqlite
+=======
+node_modules/
+.env
+>>>>>>> 1af5a8dc9f354f47dd785dce03d1380a61f8ef33
