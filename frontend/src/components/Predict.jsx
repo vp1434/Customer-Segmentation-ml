@@ -1,29 +1,39 @@
 import { useState } from "react";
 import { predictCustomer } from "../api";
 
-const Predict = () => {
+export default function Predict() {
   const [result, setResult] = useState(null);
+  const [error, setError] = useState("");
 
   const handlePredict = async () => {
-    const data = {
-      features: [12000, 3, 2, 45], // demo input
-    };
-
     try {
-      const res = await predictCustomer(data);
+      const customer = {
+        "Annual Income (k$)": 120,
+        "Spending Score (1-100)": 65,
+        Age: 35,
+        Gender: "Male",
+      };
+
+      const res = await predictCustomer(customer);
       setResult(res);
+      setError("");
     } catch (err) {
-      console.error(err);
-      alert("Backend error (later fix kar lenge)");
+      setError(err.message);
+      setResult(null);
     }
   };
 
   return (
     <div>
-      <button onClick={handlePredict}>Predict Customer</button>
-      {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
+      <button onClick={handlePredict}>Predict Customer Segment</button>
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {result && (
+        <pre style={{ background: "#eee", padding: "10px" }}>
+          {JSON.stringify(result, null, 2)}
+        </pre>
+      )}
     </div>
   );
-};
-
-export default Predict;
+}
